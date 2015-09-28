@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+	<!--Interactive Face-->
+    <script src="http://code.createjs.com/easeljs-0.8.1.min.js"></script>
+    <script src="http://code.createjs.com/tweenjs-0.6.1.min.js"></script>
+    <script src="http://code.createjs.com/movieclip-0.8.1.min.js"></script>
+    <script src="http://code.createjs.com/preloadjs-0.6.1.min.js"></script>
+    <script src="myFace.js"></script>
+    <script>
+    var canvas, stage, exportRoot;
+
+    function init() {
+        canvas = document.getElementById("canvas");
+        images = images||{};
+        ss = ss||{};
+
+        var loader = new createjs.LoadQueue(false);
+        loader.addEventListener("fileload", handleFileLoad);
+        loader.addEventListener("complete", handleComplete);
+    loader.loadFile({src:"images/myFace_atlas_.json", type:"spritesheet", id:"myFace_atlas_"}, true);
+        loader.loadManifest(lib.properties.manifest);
+    }
+
+    function handleFileLoad(evt) {
+        if (evt.item.type == "image") { images[evt.item.id] = evt.result; }
+    }
+
+    function handleComplete(evt) {
+        var queue = evt.target;
+        ss["myFace_atlas_"] = queue.getResult("myFace_atlas_");
+        exportRoot = new lib.myFace();
+
+        stage = new createjs.Stage(canvas);
+        stage.addChild(exportRoot);
+        stage.update();
+
+        createjs.Ticker.setFPS(lib.properties.fps);
+        createjs.Ticker.addEventListener("tick", stage);
+    }
+    </script>
+    <!--/Interactive Face -->
+
+
+	<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+        <link href="css/myCSS.css" rel="stylesheet">
+	    <title>Anil Jason - Programer/Hacker/Nerd</title>
+        <meta name="author" content="Anil Jason" />
+        <meta name="description" content="The personal website dedicated to log my personal projects and hacks." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0;">
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+    
+
+    <!-- Decouped HTML-->
+      <script> 
+        $(function(){
+          $("#includedContent").load("abilities.html"); 
+        });
+    </script> 
+     <!-- Decoupled HTML -->
+
+    </head>
+    <body onload="init();">
+    <main>
+	
+
+
+<div id="dialog" title="Basic dialog">
+</div>
+
+<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top" id="nameText">Anil Jason</a>
+				
+				
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right extra-shift">
+                    <li class="page-scroll">
+                        <a href="resume.pdf" id="ViewResume">View Resume</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+<section class="module parallax parallax-2" id="parallax">
+  <div class="containery">
+  <div align='center'>
+	 <div class="face_it">
+		<canvas id="canvas" width="600" height="680"></canvas>
+	 </div>
+	 <p class = "who">
+	 Highly enthusiastic programmer with a wide set of experience in both frontend and backend desgin.
+	 </p>
+	 <p class = "who">
+	 Passionate about learning and working with others. 
+	 </p>
+	 </div>
+  </div>
+</section>
+
+
+<div id="leaderboard" class = "row-full">
+<div align = 'center'>
+	<font class = "things">
+		Things I Made
+	</font>
+</div>
+</div>
+
+<div id="aboutMore" class="aboutMore">
+<div class="row">
+    <div class="col-sm-4 category-box"> 
+    <a class="catLink" id="ProjRecent" onclick="displayProjectsOf('Recent')" >Recent</a><br>
+    <a class="catLink" id="ProjWebDev" onclick="displayProjectsOf('WebDev')">WebDev</a><br>
+    <a class="catLink" id="ProjGaming" onclick="displayProjectsOf('Gaming')">Gaming</a><br>
+    <a class="catLink" id="ProjWatchApp" onclick="displayProjectsOf('WatchApp')">WatchApp</a><br>
+    <a class="catLink" id="ProjMobile" onclick="displayProjectsOf('Mobile')">Mobile</a><br>
+    <a class="catLink" id="ProjHackathon" onclick="displayProjectsOf('Hackathon')">Hackathon</a><br>
+    <a class="catLink" id="ProjLarge" onclick="displayProjectsOf('Large')">Large Scale</a><br>
+    <a class="catLink" id="ProjJavascript" onclick="displayProjectsOf('Javascript')">Javascript</a><br>
+    <a class="catLink" id="ProjC" onclick="displayProjectsOf('C')" >C/C++</a><br>
+    <a class="catLink" id="ProjJava" onclick="displayProjectsOf('Java')">Java</a><br>
+    <a class="catLink" id="ProjNodeJS" onclick="displayProjectsOf('NodeJS')" >NodeJS</a><br>
+    <a class="catLink" id="ProjPHP" onclick="displayProjectsOf('PHP')" >PHP</a><br>
+    <a class="catLink" id="ProjFlash" onclick="displayProjectsOf('Flash')" >Flash</a><br>
+    <a class="catLink" id="ProjCanvas" onclick="displayProjectsOf('Canvas')" >Canvas</a><br>
+    <a class="catLink" id="ProjMisc" onclick="displayProjectsOf('Misc')" >Experimental</a><br>   
+    </div>
+    
+    <div class="col-sm-9 projects">
+  
+        <!-- ROW 1 -->
+            <div class="col-sm-4">
+                <div class='projectTable' id="projectTable1">
+               
+                </div>   
+            </div>
+
+            <div class="col-sm-4">
+                <div class='projectTable' id="projectTable2">
+                
+                </div>   
+            </div>
+
+            <div class="col-sm-4">
+                <div class='projectTable' id="projectTable3">
+                
+                </div>   
+            </div>
+
+        <!-- ROW 2 -->
+             <div class="col-sm-4">
+                <div class='projectTable' id="projectTable4">
+               
+                </div>   
+            </div>
+
+            <div class="col-sm-4">
+                <div class='projectTable' id="projectTable5">
+                
+                </div>   
+            </div>
+
+            <div class="col-sm-4">
+                <div class='projectTable' id="projectTable6">
+                
+                </div>   
+            </div>
+
+        <!-- ROW 3 -->
+             <div class="col-sm-4">
+                <div class='projectTable' id="projectTable7">
+               
+                </div>   
+            </div>
+
+            <div class="col-sm-4">
+                <div class='projectTable' id="projectTable8">
+                
+                </div>   
+            </div>
+
+            <div class="col-sm-4">
+                <div class='projectTable' id="projectTable9">
+                
+                </div>   
+            </div>
+
+
+ </div>
+ </div>
+</div>
+
+<div id="leaderboard2" class = "row-full">
+<div align = 'center'>
+    <div id="includedContent"></div>
+</div>
+
+
+<div id="leaderboard3" class = "row-full">
+<div align = 'center'>
+    <h3 class="contact">
+	Contact Information: 
+    </h3>
+    <p class="contact-small">
+    Email: Satern693@gmail.com  |  Phone: (786) - 366 - 5442  |   <a href="https://www.linkedin.com/pub/anil-jason/98/885/255" class="linkedin"> LinkedIn </a>
+    </p>
+</div>
+</div>
+</div>
+<script src="js/demo.js"></script>
+<script src="f.js"></script>
+<script src="js/projects.js"></script>
